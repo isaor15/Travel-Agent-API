@@ -7,11 +7,11 @@ def usermenu():
     while True: 
         
         usermenu = input("Welcome to the Bella Vista Travel Agency! Let's set up your plan! Enter the corresponding number to begin\n" \
-        "1. Find you dream destination\n " 
-        "2. Add a country to your trip\n "
-        "3. Show trips\n " \
-        "4. Calculate budget\n " \
-        "5. Save your travel plan\n" \
+        "1. Find your dream destination\n" 
+        "2. Add a country to your trip\n"
+        "3. Show trips\n "
+        "4. Calculate budget\n "
+        "5. Save your travel plan\n"
         "6. Exit\n")
         
         if usermenu == "1":
@@ -47,9 +47,9 @@ def country_vis():
 
             data = response.json()[0]
 
-            languages = ",".join(data["languages"].values())
-            currencies = ",".join(data["currencies"].keys())
-            timezones = ",".join(data["timezones"])
+            languages = ", ".join(data["languages"].values())
+            currencies = ", ".join(data["currencies"].keys())
+            timezones = ", ".join(data["timezones"])
 
             print("Ahh, I've found it. What a great country!")
             print(f"Here's some useful information about {country}")
@@ -124,22 +124,26 @@ def calcbudg():
 
 def saveplan():
 
+    if len(trip) == 0:
+        print("Oh no! There isn't a trip to save!")
+        return
+
     client = input("Traveler, what is your name?: ")
 
     with open ("travelplan.txt", "w") as file:
-        file.write("---Bella Vista Travel Agency---")
-        file.wrtie("Client: " + client)
+        file.write("---Bella Vista Travel Agency---\n")
+        file.write("Client: " + client + "\n")
 
         for place in trip:
-            country = place["country"]
+            country = place["Country"]
             days = place["Days"]
             arrival = place["Arrival"]
             notes = place["Notes/requirements"]
 
             file.write("Destination: " + country + "\n")
-            file.write("Duration of stay: " + days + "\n") 
+            file.write("Duration of stay: " + str(days) + "\n") 
             file.write("Arrival date: " + arrival + "\n")
-            file.write("Notes/requirements: " + notes)
+            file.write("Notes/requirements: " + notes + "\n")
 
     print("Your travel plan is ready and saved! Bon voyage!")
 usermenu()
