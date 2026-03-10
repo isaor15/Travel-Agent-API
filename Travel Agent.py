@@ -72,7 +72,7 @@ def addtrip():
     getthere = input("What date will you be arrving at? (DD/MM/YYYY format): ")
     mustknow = input("Are there any notes or special requirements we must know about? (Click ENTER if none): ")
     if mustknow == "":
-          mustknow = "No notes or special requiremens"
+          mustknow = "No notes or special requirements"
 
     tripinfo = ({
         "Country": country,
@@ -117,9 +117,9 @@ def calcbudg():
         total = hotel + transport + agentfee
 
         print("Here is your estimated budget for your dream destination!:")
-        print("Your beautiful hotel would be: ", hotel)
-        print("Transportation would be: ", transport)
-        print("The agency fee would be: ", agentfee)
+        print("Your beautiful hotel would be: $", hotel)
+        print("Transportation would be: $", transport)
+        print("The agency fee would be: $", agentfee)
         print("You're only $", total, "away from your dream trip!")
 
 def saveplan():
