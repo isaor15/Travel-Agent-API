@@ -6,11 +6,11 @@ def usermenu():
 
     while True: 
         
-        usermenu = input("Welcome to the Bella Vista Travel Agency! Let's set up your plan! Enter the corresponding number to begin\n" \
+        usermenu = input("Welcome to the Bella Vista Travel Agency! Let's set up your plan! Enter the corresponding number to begin: \n" \
         "1. Find your dream destination\n" 
         "2. Add a country to your trip\n"
-        "3. Show trips\n "
-        "4. Calculate budget\n "
+        "3. Show trips\n"
+        "4. Calculate budget\n"
         "5. Save your travel plan\n"
         "6. Exit\n")
         
