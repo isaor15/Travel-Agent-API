@@ -31,7 +31,7 @@ def usermenu():
         elif usermenu == "6":
             print("Thank you for visiting Bella Vista Travel Agency! Come back next time for your dream vacation!")
             break
-        
+
         else:
             print("Oh no! That's not an option!")
 
@@ -72,20 +72,51 @@ def addtrip():
     if mustknow == "":
           mustknow = "No notes or special requiremens"
 
-    trip.append({
+    tripinfo = ({
         "Country": country,
         "Days": days,
         "Arrival": getthere,
         "Notes/requirements": mustknow
     })
+
+    trip.append(tripinfo)
+
+    
     print(f"{country} has been added to your trip. How exciting!")
     print(country, "Amount of days:", days, "Arrival", getthere, "Notes:", mustknow)
 
 def seetrip():
-     pass
+    if len(trip) == 0:
+        print("No countries added to your trip yet!")   
+
+    else:
+        print("Your Travel Plan:")
+        for place in trip:
+            print(place["Country"], "-", place["Days"], "days")
+            print("Arrival:", place["Arrival"])
+            print("Notes/requirements: ", place["Notes/requirements"])
 
 def calcbudg():
-     pass
+    if len(trip) == 0:
+        print("There is no trip to calculate a budget for:(")
+
+    else:
+        alldays = 0
+
+        for place in trip:
+            alldays = alldays + place["days"]
+        
+        hotel = alldays * 100
+        transport = len(trip) * 70
+        agentfee = 40
+
+        total = hotel + transport + agentfee
+
+        print("Here is your estimated budget for your dream destination!:")
+        print("Your beautiful hotel would be: ", hotel)
+        print("Transportation would be: ", transport)
+        print("The agency fee would be: ", agentfee)
+        print("You're only $", total, "away from your dream trip!")
 
 def saveplan():
      pass
