@@ -3,6 +3,7 @@ import requests
 trip = []
 
 def usermenu():
+
     while True: 
         
         usermenu = input("Welcome to the Bella Vista Travel Agency! Let's set up your plan! Enter the corresponding number to begin\n" \
@@ -65,6 +66,7 @@ def country_vis():
             print("Oh no! We couldn't find that country :/")
 
 def addtrip():
+
     country = input("What country are you adding to your trip?: ")
     days = int(input("How many days will you be visiting?: "))
     getthere = input("What date will you be arrving at? (DD/MM/YYYY format): ")
@@ -86,6 +88,7 @@ def addtrip():
     print(country, "Amount of days:", days, "Arrival", getthere, "Notes:", mustknow)
 
 def seetrip():
+
     if len(trip) == 0:
         print("No countries added to your trip yet!")   
 
@@ -97,6 +100,7 @@ def seetrip():
             print("Notes/requirements: ", place["Notes/requirements"])
 
 def calcbudg():
+
     if len(trip) == 0:
         print("There is no trip to calculate a budget for:(")
 
@@ -104,7 +108,7 @@ def calcbudg():
         alldays = 0
 
         for place in trip:
-            alldays = alldays + place["days"]
+            alldays = alldays + place["Days"]
         
         hotel = alldays * 100
         transport = len(trip) * 70
@@ -119,7 +123,23 @@ def calcbudg():
         print("You're only $", total, "away from your dream trip!")
 
 def saveplan():
-     pass
 
+    client = input("Traveler, what is your name?: ")
 
+    with open ("travelplan.txt", "w") as file:
+        file.write("---Bella Vista Travel Agency---")
+        file.wrtie("Client: " + client)
+
+        for place in trip:
+            country = place["country"]
+            days = place["Days"]
+            arrival = place["Arrival"]
+            notes = place["Notes/requirements"]
+
+            file.write("Destination: " + country + "\n")
+            file.write("Duration of stay: " + days + "\n") 
+            file.write("Arrival date: " + arrival + "\n")
+            file.write("Notes/requirements: " + notes)
+
+    print("Your travel plan is ready and saved! Bon voyage!")
 usermenu()
