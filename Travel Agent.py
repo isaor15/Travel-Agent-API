@@ -56,12 +56,12 @@ def country_vis():
 
             #you gotta know this stuff
             print("This beautiful country's capital is:", data["capital"][0])
-            print("This country's official name is", data["name"]["official"])
-            print("The region this country is in the", data["region"])
+            print("This country's official name is:", data["name"]["official"])
+            print("The country is in the region of:", data["region"])
             print("Around", data["population"], "people live here!")
             print("If you wanna buy anything, you'd use", currencies)
-            print("You better start learning", languages, "!")
-            print("I sure hope you don't get jet-lagged. here the time zone is", timezones)
+            print("You better start learning", languages,"!")
+            print("Here the time zone is", timezones, "I sure hope you don't get jet-lagged!")
         else:
             print("Oh no! We couldn't find that country :/")
 
