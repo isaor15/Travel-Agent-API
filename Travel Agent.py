@@ -30,7 +30,8 @@ def usermenu():
 
         elif usermenu == "6":
             print("Thank you for visiting Bella Vista Travel Agency! Come back next time for your dream vacation!")
-
+            break
+        
         else:
             print("Oh no! That's not an option!")
 
@@ -64,12 +65,21 @@ def country_vis():
             print("Oh no! We couldn't find that country :/")
 
 def addtrip():
-     country = input("What country are you adding to your trip?: ")
-     days = int(input("How many days will you be visiting?: "))
-     getthere = input("What date will you be arrving at? (DD/MM/YYYY format): ")
-     mustknow = input("Are there any notes or special requirements we must know about? (Click ENTER if none): ")
-     if mustknow == "":
+    country = input("What country are you adding to your trip?: ")
+    days = int(input("How many days will you be visiting?: "))
+    getthere = input("What date will you be arrving at? (DD/MM/YYYY format): ")
+    mustknow = input("Are there any notes or special requirements we must know about? (Click ENTER if none): ")
+    if mustknow == "":
           mustknow = "No notes or special requiremens"
+
+    trip.append({
+        "Country": country,
+        "Days": days,
+        "Arrival": getthere,
+        "Notes/requirements": mustknow
+    })
+    print(f"{country} has been added to your trip. How exciting!")
+    print(country, "Amount of days:", days, "Arrival", getthere, "Notes:", mustknow)
 
 def seetrip():
      pass
