@@ -1,0 +1,6 @@
+---Bella Vista Travel Agency---
+Client: Isa
+Destination: Venezuela
+Duration of stay: 3
+Arrival date: 1/4/25
+Notes/requirements: Need a room with a view

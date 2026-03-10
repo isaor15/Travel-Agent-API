@@ -141,7 +141,7 @@ def saveplan():
             notes = place["Notes/requirements"]
 
             file.write("Destination: " + country + "\n")
-            file.write("Duration of stay: " + str(days) + "\n") 
+            file.write("Duration of stay (days): " + str(days) + "\n") 
             file.write("Arrival date: " + arrival + "\n")
             file.write("Notes/requirements: " + notes + "\n")
 
