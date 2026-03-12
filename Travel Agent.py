@@ -57,22 +57,59 @@ def country_vis():
             #you gotta know this stuff
             print("This beautiful country's capital is:", data["capital"][0])
             print("This country's official name is:", data["name"]["official"])
-            print("The country is in the region of:", data["region"])
+            print("The country is in the region of:", data["region"], "and subregion of:", data["subregion"])
             print("Around", data["population"], "people live here!")
+            print("Here's a useful tidbit to remember! This country's code is:", data["cca2"])
             print("If you wanna buy anything, you'd use", currencies)
             print("You better start learning", languages,"!")
             print("Here the time zone is", timezones, "I sure hope you don't get jet-lagged!")
+
+            weatherlink = f"https://api.open-meteo.com/v1/forecast?latitude=45.4643&longitude=9.1895&hourly=temperature_2m" 
+            weather = requests.get(weatherlink)
+
+            if weather.status_code == 200:
+                wdata = weather.json()
+
+                temp = wdata["hourly"]["temperature_2m"][0]
+
+            print("The weather here seems nice! Its currently:", temp, "C")
+            
         else:
             print("Oh no! We couldn't find that country :/")
 
 def addtrip():
 
     country = input("What country are you adding to your trip?: ")
-    days = int(input("How many days will you be visiting?: "))
-    getthere = input("What date will you be arrving at? (DD/MM/YYYY format): ")
     mustknow = input("Are there any notes or special requirements we must know about? (Click ENTER if none): ")
     if mustknow == "":
           mustknow = "No notes or special requirements"
+
+    days = int(input("How many days will you be visiting?: "))
+    if days <= 0:
+        print("Oh no!. It seems you can't have negative days, they must be greater than 0! Are you trying to avoid paying?")
+        return
+    
+    getthere = input("What date will you be arrving? (DD/MM/YYYY format): ")
+    specdays = getthere.split("/")
+    if len(specdays) != 3:
+        print("We can't accept that date format:(")
+        return
+    
+    day = int(specdays[0])
+    month = int(specdays[1])
+    year = int(specdays[2])
+
+    if day < 1 or day > 31:
+        print("This isn't a REAl day, silly! There are only 31 days in a month!")
+        return
+    
+    if month < 1 or month > 12:
+        print("Oops, it seems like that is an invalid month:/")
+        return
+    
+    if year < 2026:
+        print("Oh no! That date is in the past! Use another year.")
+        return
 
     tripinfo = ({
         "Country": country,
@@ -130,7 +167,7 @@ def saveplan():
 
     client = input("Traveler, what is your name?: ")
 
-    with open ("travelplan.txt", "w") as file:
+    with open ("travelplan.txt", "a") as file:
         file.write("---Bella Vista Travel Agency---\n")
         file.write("Client: " + client + "\n")
 

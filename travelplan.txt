@@ -1,6 +1,12 @@
 ---Bella Vista Travel Agency---
-Client: Isa
-Destination: Venezuela
-Duration of stay: 3
-Arrival date: 1/4/25
-Notes/requirements: Need a room with a view
+Client: Elizabeth Mendez
+Destination: United Kingdom
+Duration of stay (days): 6
+Arrival date: 12/4/26
+Notes/requirements: Visit historic places
+---Bella Vista Travel Agency---
+Client: maria
+Destination: france
+Duration of stay (days): 6
+Arrival date: 1/2/2026
+Notes/requirements: No notes or special requirements
